@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+ 
+{%block title%} ==Chat== {%endblock%}
+
+{%block buttons%}
+<a class="nav-link px-10 text-primary">{{user}}</a>
+<a href='/logout'' class="btn btn-outline-light me-2">Log out</a>
+{%endblock%}
+{%block body%} 
+
+<div class="container">
+  <form method="post" style="padding:10px;
+  border-radius:10px;display : inline;">
+    <input type="text" name="message" id='message' class="form-control" placeholder="Сообщение..." aria-label="Search">
+    <input type="submit" class="btn btn-warning" style = "float:right;" value="Отправить">
+  </form>
+  
+  <div style="color:white;" id="messages" class="messages">
+    {% for el in messages%}
+    <br>
+       <div class="alert alert-info">
+         
+          <h2>{{el.sender}}</h2>
+          <p><b>{{el.text}}</b></p>
+          <p><b>{{el.data.date()}}</b></p>
+     
+       </div>
+    {%endfor%}      
+    <script>
+      setInterval(function(){ // load the data from your endpoint into the div
+          $("#messages").load("/get_messages")
+      },1000)
+      </script>
+   </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%} 
+{%block title%} Регистрация {%endblock%}
+{%block buttons%}
+<div class="text-end">
+  <a href='/login'' class="btn btn-outline-light me-2">Login</a>
+  <a href='/signup' class="btn btn-warning">Sign-up</a>
+  {%block logout%}{%endblock%}
+</div>
+{%endblock%}
+{%block body%} 
+<div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-5 shadow">
+        <div class="modal-header p-5 pb-4 border-bottom-0">
+          <!-- <h5 class="modal-title">Modal title</h5> -->
+          <h2 class="fw-bold mb-0">Регистрация</h2>
+       
+        </div>
+  
+        <div class="modal-body p-5 pt-0">
+          <form class="" method="post">
+        
+        
+              {{form.hidden_tag()}}
+              {{wtf.form_field(form.username)}}
+              <br>
+              {{wtf.form_field(form.password)}}
+             
+            <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Зарегистрироваться</button>
+            <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+            <hr class="my-4">
+          
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}

@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%} 
+
+{%block title%} Авторизация {%endblock%}
+{%block buttons%}
+<div class="text-end">
+  <a href='/login'' class="btn btn-outline-light me-2">Login</a>
+  <a href='/signup' class="btn btn-warning">Sign-up</a>
+  {%block logout%}{%endblock%}
+</div>
+{%endblock%}
+{%block body%} 
+<div class="container" style="background-color: white;  border-radius: 10px;  margin-top:100px; height: 400px; margin-right: auto; margin-left: auto; width: 800px; ">
+    <form method="post">
+      <br>
+      <br>
+      <h1  class="h3 mb-3 fw-normal">Авторизация</h1>
+  
+        {{form.hidden_tag()}}
+        {{wtf.form_field(form.username)}}
+        <br>
+        {{wtf.form_field(form.password)}}
+        
+ 
+      <button style="margin-top:50px;" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      
+    </form>
+</div>
+  {%endblock%}
